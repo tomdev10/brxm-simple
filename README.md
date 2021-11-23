@@ -29,7 +29,7 @@ Using the debug that comes with the SPA SDK, and creating an axios interceptor o
 
 ### Workaround
 
-With the same debug settings, I also tried a workaround and basically forced the app to render the children in paralell to the `BrPage` component (see branch [workaround](/github/brxm-simple/tree/workaround)). This worked, but I'm not at all convinvced this works at scale/with more complex pages. It also leads to a question of what is the best way to use the `BrPage` component with `Routes` - should it wrap the routes, or be re-rendered on each page change? 
+With the same debug settings, I also tried a workaround and basically forced the app to render the children in paralell to the `BrPage` component (see branch [workaround](/tree/workaround)). This worked, but I'm not at all convinvced this works at scale/with more complex pages. It also leads to a question of what is the best way to use the `BrPage` component with `Routes` - should it wrap the routes, or be re-rendered on each page change? 
 
 ![Workaround Test](./assets/workaround.png "Workaround")
 
