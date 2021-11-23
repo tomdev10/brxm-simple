@@ -16,7 +16,17 @@
 
 import React from 'react';
 import Routes from './Routes';
+import axios from 'axios';
 
+axios.interceptors.request.use((request: any) => {
+  console.log('[AXIOS] Starting Request')
+  return request
+})
+
+axios.interceptors.response.use((response: any) => {
+  console.log('[AXIOS] Response recived')
+  return response
+})
 
 export default function App() {
   return (

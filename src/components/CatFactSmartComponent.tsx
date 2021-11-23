@@ -24,7 +24,7 @@ export function CatFactSmartComponent() {
 
   useEffect(() => {
     refetch()
-  },[]);
+  },[refetch]);
 
   if (loading) return <div>Loading...</div>
   return (
