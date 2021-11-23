@@ -19,6 +19,7 @@ import axios from 'axios';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { BrComponent, BrPage, BrPageContext } from '@bloomreach/react-sdk';
 import { Banner, Content, Menu, NewsList } from './components';
+import useAxios from 'axios-hooks';
 
 export default function App(props: RouteComponentProps) {
   const configuration = {
@@ -27,6 +28,11 @@ export default function App(props: RouteComponentProps) {
     httpClient: axios,
     path: `${props.location.pathname}${props.location.search}`,
   };
+
+  const [{ data }, refetch] = useAxios(
+    'https://catfact.ninja/fact'
+  )
+  
   const mapping = { Banner, Content, 'News List': NewsList, 'Simple Content': Content };
 
   return (
@@ -43,12 +49,16 @@ export default function App(props: RouteComponentProps) {
             </BrPageContext.Consumer>
             <div className="collapse navbar-collapse">
               <BrComponent path="menu">
+                <button onClick={refetch}>refetch</button>
                 <Menu />
               </BrComponent>
             </div>
           </div>
         </nav>
       </header>
+      <section>
+       <p>{JSON.stringify(data?.fact)}</p>
+      </section>
       <section className="container flex-fill pt-3">
         <BrComponent path="main" />
       </section>
