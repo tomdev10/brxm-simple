@@ -21,6 +21,15 @@ import { BrComponent, BrPage, BrPageContext } from '@bloomreach/react-sdk';
 import { Banner, Content, Menu, NewsList } from './components';
 import { CatFactSmartComponent } from './components/CatFactSmartComponent';
 
+axios.interceptors.request.use((request: any) => {
+  console.log('[AXIOS] Starting Request to ', request.url)
+  return request
+})
+
+axios.interceptors.response.use((response: any) => {
+  console.log('[AXIOS] Response recived')
+  return response
+})
 
 export default function App(props: RouteComponentProps) {
   const configuration = {
@@ -28,6 +37,7 @@ export default function App(props: RouteComponentProps) {
     endpointQueryParameter: 'endpoint',
     httpClient: axios,
     path: `${props.location.pathname}${props.location.search}`,
+    debug: true
   };
 
  
