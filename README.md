@@ -35,6 +35,6 @@ With the same debug settings, I also tried a workaround and basically forced the
 
 ### Conclusion
 
-Is it possible for the SPA SDK to be non-blocking? 
-Has this problem been faced before? 
-Is there any novel way to use the `BrPage` component to ensure that this doesn't happen? 
+- Is it possible for the SPA SDK to be non-blocking? 
+- Has this problem been faced before? 
+- Is there any novel way to use the `BrPage` component to ensure that this doesn't happen? 
