@@ -21,5 +21,5 @@ npm i
 npm run start
 ```
 
-The CMS should now be accessible at <http://localhost:8080/cms>, and it should render the React app in preview mode in the Experience manager.
+The CMS should now be accessible at <http://localhost:8080/cms>, and it should render the React app in preview mode in the Experience manager. PW: admin/admin
 The SPA itself can be accessed directly via <http://localhost:3000>.
