@@ -15,14 +15,18 @@
  */
 
 import React from 'react';
-import Routes from './Routes';
+import {
+    Switch,
+    Route,
+  } from "react-router-dom";
+import Home  from './pages/Home';
+import News  from './pages/News';
 
-
-export default function App() {
+export default function Routes() {
   return (
-    <>
-      <Routes />
-    </>
-    
+    <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/news' component={News} />
+    </Switch>
   );
 }

@@ -15,13 +15,24 @@
  */
 
 import React from 'react';
-import Routes from './Routes';
+import { CatFactSmartComponent } from 'src/components/CatFactSmartComponent';
+import { BrComponent, BrPage } from '@bloomreach/react-sdk';
+import {mapping} from '../config/mapping';
+import {configuration} from '../config/configuration';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
-
-export default function App() {
+export default function Home() {
+  const location = useLocation();
   return (
     <>
-      <Routes />
+    <Link to="/news">News</Link>
+    <BrPage configuration={{...configuration, path: `${location.pathname}${location.search}`}} mapping={mapping}>
+      <section className="container flex-fill pt-3">
+        <CatFactSmartComponent />
+        <BrComponent path="main" />
+      </section>
+    </BrPage>
     </>
     
   );

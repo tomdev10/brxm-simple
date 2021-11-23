@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import useAxios from 'axios-hooks';
 
 export function CatFactSmartComponent() {
@@ -22,7 +22,11 @@ export function CatFactSmartComponent() {
         'https://catfact.ninja/fact'
     );
 
-    if (loading) return <div>Loading...</div>
+  useEffect(() => {
+    refetch()
+  },[]);
+
+  if (loading) return <div>Loading...</div>
   return (
     <div>
         <section>
