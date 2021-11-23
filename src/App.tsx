@@ -19,7 +19,7 @@ import Routes from './Routes';
 import axios from 'axios';
 
 axios.interceptors.request.use((request: any) => {
-  console.log('[AXIOS] Starting Request')
+  console.log('[AXIOS] Starting Request to:', request.url)
   return request
 })
 

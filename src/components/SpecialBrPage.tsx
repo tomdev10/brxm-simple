@@ -22,7 +22,6 @@ import { useLocation } from 'react-router';
 
 export default function SpecialBrPage(props: { children: any; }) {
   const location = useLocation();
-  console.log(props.children);
   return (
     <>
     {props.children}
