@@ -14,47 +14,56 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import axios from 'axios';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { BrComponent, BrPage, BrPageContext } from '@bloomreach/react-sdk';
-import { Banner, Content, Menu, NewsList } from './components';
-import { CatFactSmartComponent } from './components/CatFactSmartComponent';
+import React from "react";
+import axios from "axios";
+import { Link, RouteComponentProps } from "react-router-dom";
+import { BrComponent, BrPage, BrPageContext } from "@bloomreach/react-sdk";
+import { Banner, Content, Menu, NewsList } from "./components";
+import { CatFactSmartComponent } from "./components/CatFactSmartComponent";
 
 axios.interceptors.request.use((request: any) => {
-  console.log('[AXIOS] Starting Request to ', request.url)
-  return request
-})
+  console.log("[AXIOS] Starting Request to ", request.url);
+  return request;
+});
 
 axios.interceptors.response.use((response: any) => {
-  console.log('[AXIOS] Response recived')
-  return response
-})
+  console.log("[AXIOS] Response recived");
+  return response;
+});
 
 export default function App(props: RouteComponentProps) {
   const configuration = {
     endpoint: process.env.REACT_APP_BRXM_ENDPOINT,
-    endpointQueryParameter: 'endpoint',
+    endpointQueryParameter: "endpoint",
     httpClient: axios,
     path: `${props.location.pathname}${props.location.search}`,
-    debug: true
+    debug: true,
+    NBRMode: true
   };
 
- 
-
-  const mapping = { Banner, Content, 'News List': NewsList, 'Simple Content': Content };
+  const mapping = {
+    Banner,
+    Content,
+    "News List": NewsList,
+    "Simple Content": Content,
+  };
 
   return (
     <BrPage configuration={configuration} mapping={mapping}>
       <header>
-        <nav className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark" role="navigation">
+        <nav
+          className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark"
+          role="navigation"
+        >
           <div className="container">
             <BrPageContext.Consumer>
-              { page => (
-                <Link to={page!.getUrl('/')} className="navbar-brand">
-                  { page!.getTitle() || 'brXM + React = ♥️'}
-                </Link>
-              ) }
+              {(page) =>
+                !!page && (
+                  <Link to={page.getUrl("/")} className="navbar-brand">
+                    {page!.getTitle() || "brXM + React = ♥️"}
+                  </Link>
+                )
+              }
             </BrPageContext.Consumer>
             <div className="collapse navbar-collapse">
               <BrComponent path="menu">
@@ -65,7 +74,7 @@ export default function App(props: RouteComponentProps) {
         </nav>
       </header>
       <section className="container flex-fill pt-3">
-      <CatFactSmartComponent />
+        <CatFactSmartComponent />
         <BrComponent path="main" />
       </section>
       <footer className="bg-dark text-light py-3">
