@@ -33,6 +33,17 @@ With the same debug settings, I also tried a workaround and basically forced the
 
 ![Workaround Test](./assets/workaround.png "Workaround")
 
+
+### NBRMode Enabled
+
+This is an attempt to test the non-blocking render activity with bloomreach's newly introduced config value NBRMode.
+@bloomreach/react-sdk version used 16.0.0
+NBRMode set to true in config.
+
+This results in app rendering the children in parallel to the `BrPage` component. We have also introduced some custom delay in the `BrPage` response to see if the children are rendered before the `BrPage` response is received. Currently this is working, children page is rendered parallel to the `BrPage` component
+
+![NBRMode Enabled Test](./assets/non-blocking.png "Non-Blocking")
+
 ### Conclusion
 
 - Is it possible for the SPA SDK to be non-blocking? 
